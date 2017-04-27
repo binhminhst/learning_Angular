@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example AngularJS The First</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script language="javascript" src="libs/angular.min.js"></script>
+		<script language="javascript" src="js/controllers.js"></script>
+    </head>
+    <body>
+        <div ng-app="appShop">
+            <div ng-controller="UserController">
+                 <h2>Example about Angular</h2><br />
+				 Email: <input name="email" id="email" type="text" value="" ng-model="email" required><br />
+				 Password: <input name="password" id="password" type="text" value="" ng-model="password"><br /><br />
+				 <input name="login" id="login" value="Login" type="button" ng-click="loginUser()" >
+				 
+				 {{data_show}} 
+				 
+				<br /><br />
+				 
+				<select name="fFabRic" id="fFabRic" ng-model="fFabRic">
+						<option value="">All</option>
+						<option value="Silk">Silk</option>
+						<option value="Cotton">Cotton</option>
+				</select>
+				<input name="btnFabRic" id="btnFabRic" value="Filter for Fab And Ric" type="button" ng-click="searchFabRic()" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 
+				<select name="fType" id="fType" ng-model="fType">
+						<option value="">All</option>
+						<option value="Bag">Bag</option>
+						<option value="Bird cage">Bird cage</option>
+						<option value="Bag Pack">Bag Pack</option>
+						<option value="Dress C">Dress C</option>
+						<option value="Dress L">Dress L</option>
+						<option value="Earing">Earing</option>
+						<option value="Key ring">Key ring</option>
+						<option value="Necklace">Necklace</option>
+						<option value="Scarf">Scarf</option>
+						<option value="Top MC">Top MC</option>
+						<option value="Top ML">Top ML</option>
+						<option value="Top SM">Top SM</option>
+						<option value="Wood fan">Wood fan</option> 
+				</select>
+				<input name="btnType" id="btnType" value="Filter for Type" type="button" ng-click="searchType()" >
+				
+				<br /><br /><br /><br />		 
+				{{data_list}}
+				   
+            </div>
+			 
+        </div>
+    </body>
+</html>
