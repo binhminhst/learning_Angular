@@ -29,8 +29,8 @@ Route::post('login', 'LoginController@doLogin') ;
 Route::get('logout', array('uses' => 'LoginController@doLogout')) ;
 
 Route::get('/shop/show', 'ShopController@Show'); //->middleware('auth:api'); /shop/show
-Route::get('/shop/show/{fab_ric}', 'ShopController@Show_fab_ric'); //->middleware('auth:api');
-Route::get('/shop/show/{type}', 'ShopController@Show_type'); //->middleware('auth:api');
+Route::get('/shop/fab_ric/{fab_ric}', 'ShopController@Show_fab_ric'); //->middleware('auth:api');
+Route::get('/shop/type/{type}', 'ShopController@Show_type'); //->middleware('auth:api');
 Route::get('/shop/show/{fab_ric}/{type}', 'ShopController@Show_fab_ric_and_type'); //->middleware('auth:api');
 
 Route::get('/auth/create/{user_name}/{pass}', 'AuthController@createAuthenticate'); //->middleware('auth:api');

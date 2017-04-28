@@ -58,22 +58,45 @@ app.controller("UserController", function($scope, $http, $window, $q) {
 					$http({ 
 							method: 'GET',
 							url: 'api/public/api/shop/show' 
-					}).then(function (data) { 
-							$scope.data_list = angular.fromJson(data.data) ;  
+					}).then(function (data) { // console.log(data.data[0].id); return false;
+							 $scope.data_list = data.data  ; 
+							 						
 					});
 		} // getInfoShop
 				
 		           
-		$scope.searchFabRic = function(){
-					if((String($scope.fFabRic) == "") || (String($scope.fFabRic) == "undefined") ){
+		$scope.searchShop = function(){
+					if(((String($scope.fFabRic) == "") || (String($scope.fFabRic) == "undefined")) &&
+					   ((String($scope.fType) == "") || (String($scope.fType) == "undefined"))){
 						getInfoShop();
 					}						
-					else{
+					else if((String($scope.fFabRic) != "") && ((String($scope.fType) == "") || (String($scope.fType) == "undefined"))){
 						$http({ 
 								method: 'GET',
-								url: 'api/public/api/shop/show/'+$scope.fFabRic
+								url: 'api/public/api/shop/fab_ric/'+$scope.fFabRic
 						}).then(function (data) {  
-								$scope.data_list = angular.fromJson(data.data) ; 
+								if(angular.fromJson(data.data) == "") $scope.data_list = "Data Updating";
+								else								  $scope.data_list = data.data  ; 
+						});		
+
+					}
+					else if((String($scope.fType) != "") && ((String($scope.fFabRic) == "") || (String($scope.fFabRic) == "undefined"))){
+						$http({ 
+								method: 'GET',
+								url: 'api/public/api/shop/type/'+$scope.fType
+						}).then(function (data) {  
+								if(angular.fromJson(data.data) == "") $scope.data_list = "Data Updating";
+								else								  $scope.data_list = data.data  ;
+						});		
+
+					}
+					else if((String($scope.fFabRic) != "") && (String($scope.fType) != "")){
+						$http({ 
+								method: 'GET',
+								url: 'api/public/api/shop/show/'+$scope.fFabRic+'/'+$scope.fType 
+						}).then(function (data) {  
+								if(angular.fromJson(data.data) == "") $scope.data_list = "Data Updating";
+								else								  $scope.data_list = data.data  ; 
 						});		
 
 					}
